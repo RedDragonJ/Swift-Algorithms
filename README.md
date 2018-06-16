@@ -7,7 +7,7 @@
    Here is the link to the problems in Java if you like to check them out: 
    https://tenderleo.gitbooks.io/leetcode-solutions-/content/GoogleEasy/1.html
    
-   FYI: the code file is called Contents.swift in each folder
+   **FYI**: the code file is called Contents.swift in each folder
 
   ### Programming Language
   
