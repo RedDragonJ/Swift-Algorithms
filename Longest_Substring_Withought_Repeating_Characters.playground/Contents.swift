@@ -4,7 +4,8 @@
  Example:
     Given "abcabcbb", the answer is "abc", which the length is 3
     Given "bbbbb", the answer is "b", with the length of 1
-    Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring
+    Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, 
+    "pwke" is a subsequence and not a substring
  */
 
 func lengthOfLongestSubstring(words: String) -> Int {
@@ -21,7 +22,8 @@ func lengthOfLongestSubstring(words: String) -> Int {
     
     for i in 0..<charArray.count {
         
-        if let lastCharIndex = charTable[charArray[i]], lastDuplicateIndex < lastCharIndex { // Check if character already exist in dictionary and check if lastDuplicateIndex is smaller than the lastChartIndex from dictionary
+        if let lastCharIndex = charTable[charArray[i]], lastDuplicateIndex < lastCharIndex { 
+         // Check if character already exist in dictionary and check if lastDuplicateIndex is smaller than the lastChartIndex from dictionary
             lastDuplicateIndex = lastCharIndex // Update the lastDuplicateIndex
         }
         maxLength = max(maxLength, i-lastDuplicateIndex) // Find the greatest number
