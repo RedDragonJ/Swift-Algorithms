@@ -19,8 +19,7 @@ func maxArea(heights: [Int]) -> Int {
         
         if heights[left] < heights[right] {
             left += 1
-        }
-        else {
+        } else {
             right -= 1
         }
     }
