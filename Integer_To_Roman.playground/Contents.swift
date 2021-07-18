@@ -10,7 +10,7 @@
 
 func intToRoman(number: Int) -> String? {
     
-    if number <= 1 && number > 3999 {
+    if number <= 1 || number > 3999 {
         return nil
     }
     
@@ -20,13 +20,13 @@ func intToRoman(number: Int) -> String? {
     var romanStr = String()
     var newNumber = number
     
-    while newNumber != 0 { // Check the value of number is 0
+    while newNumber != 0 { // Run the loop if the newNumber is not 0
         for i in 0..<values.count { // Go through the values
             let result = newNumber - values[i]
             if result >= 0 { // Anytime if the difference smaller than 0 we skip
                 newNumber = result // Update the newNumber(aka: number)
                 romanStr.append(symbols[i])
-                break // Leave inside loop once found one, no need continue to finish the entire loop
+                break // Leave inside loop once found the symbol, no need continue to finish the entire loop
             }
         }
     }
@@ -45,12 +45,16 @@ let test5 = 3999
 let test6 = 1
 let test7 = 5
 let test8 = 8
+let test9 = -1
+let test10 = 0
 
-print(intToRoman(number: test1) ?? "Wrong number")
-print(intToRoman(number: test2) ?? "Wrong number")
-print(intToRoman(number: test3) ?? "Wrong number")
-print(intToRoman(number: test4) ?? "Wrong number")
-print(intToRoman(number: test5) ?? "Wrong number")
-print(intToRoman(number: test6) ?? "Wrong number")
-print(intToRoman(number: test7) ?? "Wrong number")
-print(intToRoman(number: test8) ?? "Wrong number")
+print(inToRoman(number: test1) ?? "Wrong number")
+print(inToRoman(number: test2) ?? "Wrong number")
+print(inToRoman(number: test3) ?? "Wrong number")
+print(inToRoman(number: test4) ?? "Wrong number")
+print(inToRoman(number: test5) ?? "Wrong number")
+print(inToRoman(number: test6) ?? "Wrong number")
+print(inToRoman(number: test7) ?? "Wrong number")
+print(inToRoman(number: test8) ?? "Wrong number")
+print(inToRoman(number: test9) ?? "Wrong number")
+print(inToRoman(number: test10) ?? "Wrong number")
