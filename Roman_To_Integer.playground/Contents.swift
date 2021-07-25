@@ -2,36 +2,46 @@
 /*
  Problem: Given a roman numeral, convert it to an integer. Input is guaranteed to be within the range from 1 to 3999.
           Roman numeral literals basically a combination of these
-          ["I","V","X","L","C","D","M"]
+          ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"]
           which are equivalent to
-          [1,5,10,50,100,500,1000]
+          [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
  Example: NA
  */
 
 func romanToInt(romanStr: String) -> Int {
-    let romanDict = ["I":1,
-                     "V":5,
-                     "X":10,
-                     "L":50,
-                     "C":100,
-                     "D":500,
-                     "M":1000]
+    let romanDict = ["M": 1000,
+                     "CM": 900,
+                     "D": 500,
+                     "CD": 400,
+                     "C": 100,
+                     "XC": 90,
+                     "L": 50,
+                     "XL": 40,
+                     "X": 10,
+                     "IX": 9,
+                     "V": 5,
+                     "IV": 4,
+                     "I": 1]
     
-    var results: Int = 0
-    var romanStrArr = Array(romanStr)
+    var finalResult: Int = 0 // Variable for final results
+    let romanStrArr = Array(romanStr).reversed() // Reverse the string array
+    var previousNumber = romanDict[String(romanStrArr.first!)]! // Get the first string character number
     
-    for i in 0..<romanStrArr.count {
+    return romanStrArr.dropFirst().reduce(previousNumber) {
+        result, current in
         
-        if i < romanStrArr.count - 1 && (romanDict[String(romanStrArr[i])]! < romanDict[String(romanStrArr[i+1])]!) {
-            results -= romanDict[String(romanStrArr[i])]!
-        }
-        else {
-            results += romanDict[String(romanStrArr[i])]!
+        let currentNumber = romanDict[String(current)]! // Get the current string character number
+        finalResult = result // Assign the result of integer to the final result variable
+        
+        if currentNumber < previousNumber {
+            finalResult -= currentNumber
+        } else {
+            finalResult += currentNumber
         }
         
+        previousNumber = currentNumber // Replace the previous number with current number and move to next
+        return finalResult
     }
-    
-    return results
 }
 
 /* >>>>>>>>>>> TEST <<<<<<<<<<< */
