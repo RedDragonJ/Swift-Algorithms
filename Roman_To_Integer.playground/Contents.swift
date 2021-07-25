@@ -24,11 +24,10 @@ func romanToInt(romanStr: String) -> Int {
                      "I": 1]
     
     var finalResult: Int = 0 // Variable for final results
-    let romanStrArr = Array(romanStr).reversed() // Reverse the string array
+    let romanStrArr = Array(romanStr).reversed() // Reverse the string character array
     var previousNumber = romanDict[String(romanStrArr.first!)]! // Get the first string character number
     
-    return romanStrArr.dropFirst().reduce(previousNumber) {
-        result, current in
+    return romanStrArr.dropFirst().reduce(previousNumber) { result, current in
         
         let currentNumber = romanDict[String(current)]! // Get the current string character number
         finalResult = result // Assign the result of integer to the final result variable
@@ -46,13 +45,13 @@ func romanToInt(romanStr: String) -> Int {
 
 /* >>>>>>>>>>> TEST <<<<<<<<<<< */
 
-let test1 = "III"
-let test2 = "IV"
-let test3 = "MMMCMXCIX"
-let test4 = "IX"
-let test5 = "V"
-let test6 = "LVIII"
-let test7 = "MCMXCIV"
+let test1 = "III" // 3
+let test2 = "IV" // 4
+let test3 = "MMMCMXCIX" // 3999
+let test4 = "IX" // 9
+let test5 = "V" // 5
+let test6 = "LVIII" // 58
+let test7 = "MCMXCIV" // 1994
 
 print(romanToInt(romanStr: test1))
 print(romanToInt(romanStr: test2))
