@@ -18,21 +18,22 @@ func longestCommonPrefix(_ stringArray: [String]) -> String? {
         return stringArray[0]
     }
     
-    var prefix = stringArray[0]
-    for i in 1..<stringArray.count {
-        let singleString = stringArray[i]
+    var prefixStr = stringArray[0]
+ 
+    for i in 1..<stringArray.count { // Loop through the string array
+        let singleString = stringArray[i] // Get each string from array one at time
         
-        if singleString.count > 0, !singleString.isEmpty { // Only check the prefix if the string is not empty string
-            while !singleString.hasPrefix(prefix) { // Continue loop if the string does not contain a prefix
-                prefix = String(prefix.prefix(prefix.count - 1)) // Reduce the template prefix string character by 1 from right to left
-                if prefix.isEmpty {
+        if singleString.count > 0, !singleString.isEmpty { // Only check for the prefix if the string is not empty string
+            while !singleString.hasPrefix(prefixStr) { // Continue to loop if the string does not contain a prefix
+                prefixStr = String(prefixStr.prefix(prefixStr.count - 1)) // Reduce the prefix string character by 1 from right to left
+                if prefixStr.isEmpty {
                     return nil // At this point the prefix does not match any string
                 }
             }
         }
     }
     
-    return prefix
+    return prefixStr
 }
 
 /// TEST
